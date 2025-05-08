@@ -1,9 +1,9 @@
 function formatString(input: string, toUpper?: boolean): string{
   if (toUpper === true || toUpper === undefined) {
-    // console.log(input.toUpperCase()) 
+    console.log(input.toUpperCase()) 
     return input.toUpperCase()
   } else {
-    // console.log(input.toLowerCase()) 
+    console.log(input.toLowerCase()) 
     return input.toLowerCase()
   }
 }
@@ -15,7 +15,7 @@ formatString("Hello", false);
 
 function filterByRating(items: { title: string; rating: number }[]): { title: string; rating: number }[]{
   const findData = items.filter(item => item.rating >= 4)
-  // console.log(findData)
+  console.log(findData)
   return findData
 }
 
@@ -30,7 +30,7 @@ filterByRating(books);
 
 function concatenateArrays<T>(...arrays: T[][]): T[]{
   const result = arrays.reduce((acc, curr) => acc.concat(curr), []);
-  // console.log(result)
+  console.log(result)
   return result
 
 }
@@ -49,7 +49,7 @@ class Vehicle {
   }
 
   getInfo() {
-    // console.log(`"Make: ${this.make}, Year: ${this.year}"`)
+    console.log(`"Make: ${this.make}, Year: ${this.year}"`)
   }
 }
 
@@ -62,7 +62,7 @@ class Car extends Vehicle{
   }
 
   getModel() {
-    // console.log(`"Model: ${this.model}"`)
+    console.log(`"Model: ${this.model}"`)
   }
 }
 
@@ -74,11 +74,11 @@ myCar.getModel();
 function processValue(value: string | number): number{
   if (typeof value === "string") {
     const str = value.length;
-    // console.log(str)
+    console.log(str)
     return str
   } else if (typeof value === "number") {
     const num = value * 2;
-    // console.log(num)
+    console.log(num)
     return num
   } 
 }
@@ -142,15 +142,16 @@ console.log(getDayType(Day.Sunday));
 
 async function squareAsync(n: number): Promise<number> {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (n >= 0) {
+    if (n >= 0) {
+      setTimeout(() => {
         resolve(n * n);
-      } else {
-        reject(new Error("Negative number not allowed"));
-      }
-    }, 1000); 
+      }, 1000);
+    } else {
+      reject(new Error("Negative number not allowed"));
+    }
   });
-}
+};
+
 
 squareAsync(4).then(console.log);        
 squareAsync(-3).catch(console.error); 
